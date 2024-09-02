@@ -1,0 +1,14 @@
+pragma solidity ^0.8.0;
+
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
+
+contract GITHEL is ERC20, Ownable {
+    constructor() ERC20("GITHUB", "GITHEL") {
+        _mint(msg.sender, 1000000 * 10 ** uint256(decimals()));
+    }
+
+    function decimals() public view virtual override returns (uint8) {
+        return 9;
+    }
+}
