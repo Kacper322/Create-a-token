@@ -1,0 +1,20 @@
+// SPDX-License-Identifier: MIT
+// Generated with Spectral Syntax
+
+pragma solidity ^0.8.0;
+
+import "@openzeppelin/contracts/token/ERC20/ERC20.sol";
+import "@openzeppelin/contracts/access/Ownable.sol";
+
+contract MARVEL is ERC20, Ownable {
+    uint256 public constant MAX_SUPPLY = 2000000;
+
+    constructor() ERC20("MARVEL", "AVENG") {
+        _mint(msg.sender, MAX_SUPPLY);
+    }
+
+    function mint(address to, uint256 amount) public onlyOwner {
+        require(totalSupply() + amount <= MAX_SUPPLY, "Max supply exceeded");
+        _mint(to, amount);
+    }
+}
